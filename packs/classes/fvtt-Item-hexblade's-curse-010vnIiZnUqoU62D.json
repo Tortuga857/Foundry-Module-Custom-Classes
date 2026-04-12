@@ -1,0 +1,149 @@
+{
+  "name": "Hexblade's Curse",
+  "type": "feat",
+  "img": "systems/dnd5e/icons/svg/statuses/cursed.svg",
+  "system": {
+    "activities": {
+      "Uqm4VTAdyaXAqtIw": {
+        "type": "utility",
+        "_id": "Uqm4VTAdyaXAqtIw",
+        "img": "",
+        "sort": 0,
+        "activation": {
+          "type": "bonus",
+          "override": false,
+          "condition": ""
+        },
+        "consumption": {
+          "scaling": {
+            "allowed": false
+          },
+          "spellSlot": true,
+          "targets": [
+            {
+              "type": "itemUses",
+              "value": "1",
+              "target": "",
+              "scaling": {}
+            }
+          ]
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "units": "minute",
+          "concentration": false,
+          "override": false,
+          "value": "1"
+        },
+        "effects": [],
+        "flags": {},
+        "range": {
+          "units": "ft",
+          "override": false,
+          "special": "",
+          "value": "30"
+        },
+        "target": {
+          "template": {
+            "contiguous": false,
+            "stationary": false,
+            "units": "ft",
+            "type": ""
+          },
+          "affects": {
+            "choice": false,
+            "type": "creature",
+            "count": "1",
+            "special": ""
+          },
+          "override": false,
+          "prompt": false
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "visibility": {
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "requireAttunement": false,
+          "requireIdentification": false,
+          "requireMagic": false,
+          "identifier": ""
+        },
+        "roll": {
+          "prompt": false,
+          "visible": false,
+          "name": "",
+          "formula": ""
+        },
+        "name": ""
+      }
+    },
+    "uses": {
+      "spent": 0,
+      "recovery": [
+        {
+          "period": "sr",
+          "type": "recoverAll"
+        },
+        {
+          "period": "lr",
+          "type": "recoverAll"
+        }
+      ],
+      "max": "1"
+    },
+    "advancement": {},
+    "description": {
+      "value": "<p>Starting at 1st level, you gain the ability to place a baleful curse on someone. As a bonus action, choose one creature you can see within 30 feet of you. The target is cursed for 1 minute. The curse ends early if the target dies, you die, or you are incapacitated. Until the curse ends, you gain the following benefits:</p><ol><li><p>You gain a bonus to damage rolls against the cursed target. The bonus equals your proficiency bonus.</p></li><li><p>Any attack roll you make against the cursed target is a critical hit on a roll of 19 or 20 on the d20.</p></li><li><p>If the cursed target dies, you regain hit points equal to your warlock level + your Charisma modifier (minimum of 1 hit point).</p></li></ol><p>You can't use this feature again until you finish a short or long rest.</p>",
+      "chat": "<p>Starting at 1st level, you gain the ability to place a baleful curse on someone. As a bonus action, choose one creature you can see within 30 feet of you. The target is cursed for 1 minute. The curse ends early if the target dies, you die, or you are incapacitated. Until the curse ends, you gain the following benefits:</p><ol><li><p>You gain a bonus to damage rolls against the cursed target. The bonus equals your proficiency bonus.</p></li><li><p>Any attack roll you make against the cursed target is a critical hit on a roll of 19 or 20 on the d20.</p></li><li><p>If the cursed target dies, you regain hit points equal to your warlock level + your Charisma modifier (minimum of 1 hit point).</p></li></ol><p>You can't use this feature again until you finish a short or long rest.</p>"
+    },
+    "identifier": "feature",
+    "source": {
+      "revision": 1,
+      "rules": "2024"
+    },
+    "crewed": false,
+    "enchant": {},
+    "prerequisites": {
+      "items": [],
+      "repeatable": false,
+      "level": 1
+    },
+    "properties": [],
+    "requirements": "Hexblade",
+    "type": {
+      "value": "class",
+      "subtype": ""
+    }
+  },
+  "effects": [],
+  "folder": null,
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.360",
+    "systemId": "dnd5e",
+    "systemVersion": "5.3.0",
+    "createdTime": 1775943794410,
+    "modifiedTime": 1775950186992,
+    "lastModifiedBy": "uvReuMsiytFLuxS6",
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": {
+      "worldId": "test-world",
+      "uuid": "Item.010vnIiZnUqoU62D",
+      "coreVersion": "14.360",
+      "systemId": "dnd5e",
+      "systemVersion": "5.3.0"
+    }
+  },
+  "ownership": {
+    "default": 0
+  }
+}

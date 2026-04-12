@@ -1,0 +1,245 @@
+{
+  "name": "Hexblade",
+  "type": "subclass",
+  "img": "systems/dnd5e/icons/classes/warlock.webp",
+  "system": {
+    "advancement": {
+      "NVNy4kCF3WHl1ONj": {
+        "type": "ItemGrant",
+        "_id": "NVNy4kCF3WHl1ONj",
+        "configuration": {
+          "items": [
+            {
+              "uuid": "Compendium.dnd-players-handbook.spells.Item.phbsplWrathfulSm",
+              "optional": false
+            },
+            {
+              "uuid": "Compendium.dnd-players-handbook.spells.Item.phbsplShield0000",
+              "optional": false
+            }
+          ],
+          "optional": false,
+          "spell": {
+            "ability": [],
+            "method": "",
+            "uses": {
+              "max": "",
+              "per": "",
+              "requireSlot": true
+            },
+            "prepared": 0
+          }
+        },
+        "flags": {},
+        "value": {},
+        "level": 1,
+        "hint": "<p>The Hexblade lets you choose from an expanded list of spells when you learn a warlock spell. The following spells are added to the warlock spell list for you.</p>",
+        "title": "Expanded Spells 1"
+      },
+      "aicVal1eeO2ecobL": {
+        "type": "ItemGrant",
+        "_id": "aicVal1eeO2ecobL",
+        "configuration": {
+          "items": [
+            {
+              "uuid": "Compendium.dnd-players-handbook.spells.Item.phbsplBlur000000",
+              "optional": false
+            }
+          ],
+          "optional": false,
+          "spell": {
+            "ability": [],
+            "method": "",
+            "uses": {
+              "max": "",
+              "per": "",
+              "requireSlot": false
+            },
+            "prepared": 0
+          }
+        },
+        "flags": {},
+        "value": {},
+        "level": 3,
+        "hint": "<p>The Hexblade lets you choose from an expanded list of spells when you learn a warlock spell. The following spells are added to the warlock spell list for you. (Branding Smite is not available in the player's handbook)</p>",
+        "title": "Expanded Spells 2"
+      },
+      "KgWcyj0QfFVlM62y": {
+        "type": "ItemGrant",
+        "_id": "KgWcyj0QfFVlM62y",
+        "configuration": {
+          "items": [
+            {
+              "uuid": "Compendium.dnd-players-handbook.spells.Item.phbsplBlink00000",
+              "optional": false
+            },
+            {
+              "uuid": "Compendium.dnd-players-handbook.spells.Item.phbsplElementalW",
+              "optional": false
+            }
+          ],
+          "optional": false,
+          "spell": {
+            "ability": [],
+            "method": "pact",
+            "uses": {
+              "max": "",
+              "per": "",
+              "requireSlot": true
+            },
+            "prepared": 2
+          }
+        },
+        "flags": {},
+        "value": {},
+        "level": 5,
+        "hint": "<p>The Hexblade lets you choose from an expanded list of spells when you learn a warlock spell. The following spells are added to the warlock spell list for you.</p>",
+        "title": "Expanded Spells 3"
+      },
+      "K0az091XwxsKytBY": {
+        "type": "ItemGrant",
+        "configuration": {
+          "items": [
+            {
+              "uuid": "Compendium.dnd-players-handbook.spells.Item.phbsplPhantasmal",
+              "optional": false
+            },
+            {
+              "uuid": "Compendium.dnd-players-handbook.spells.Item.phbsplStaggering",
+              "optional": false
+            }
+          ],
+          "optional": false,
+          "spell": {
+            "ability": [],
+            "method": "pact",
+            "uses": {
+              "max": "",
+              "per": "",
+              "requireSlot": true
+            },
+            "prepared": 2
+          }
+        },
+        "flags": {},
+        "value": {},
+        "level": 7,
+        "hint": "<p>The Hexblade lets you choose from an expanded list of spells when you learn a warlock spell. The following spells are added to the warlock spell list for you.</p>",
+        "title": "Expanded Spells 4",
+        "_id": "K0az091XwxsKytBY"
+      },
+      "KuGmjVQ6RvjW6Kb4": {
+        "type": "ItemGrant",
+        "configuration": {
+          "items": [
+            {
+              "uuid": "Compendium.dnd-players-handbook.spells.Item.phbsplBanishingS",
+              "optional": false
+            },
+            {
+              "uuid": "Compendium.dnd-players-handbook.spells.Item.phbsplConeofCold",
+              "optional": false
+            }
+          ],
+          "optional": false,
+          "spell": {
+            "ability": [],
+            "method": "pact",
+            "uses": {
+              "max": "",
+              "per": "",
+              "requireSlot": true
+            },
+            "prepared": 2
+          }
+        },
+        "flags": {},
+        "value": {},
+        "level": 9,
+        "hint": "<p>The Hexblade lets you choose from an expanded list of spells when you learn a warlock spell. The following spells are added to the warlock spell list for you.</p>",
+        "title": "Expanded Spells 5",
+        "_id": "KuGmjVQ6RvjW6Kb4"
+      },
+      "YX5MjugqsDG4qzwo": {
+        "type": "ItemGrant",
+        "_id": "YX5MjugqsDG4qzwo",
+        "configuration": {
+          "items": [
+            {
+              "uuid": "Item.010vnIiZnUqoU62D",
+              "optional": false
+            }
+          ],
+          "optional": false,
+          "spell": null
+        },
+        "flags": {},
+        "value": {},
+        "level": 1,
+        "hint": "<p>Starting at 1st level, you gain the ability to place a baleful curse on someone. As a bonus action, choose one creature you can see within 30 feet of you. The target is cursed for 1 minute. The curse ends early if the target dies, you die, or you are incapacitated. Until the curse ends, you gain the following benefits:</p><ol><li><p>You gain a bonus to damage rolls against the cursed target. The bonus equals your proficiency bonus.</p></li><li><p>Any attack roll you make against the cursed target is a critical hit on a roll of 19 or 20 on the d20.</p></li><li><p>If the cursed target dies, you regain hit points equal to your warlock level + your Charisma modifier (minimum of 1 hit point).</p></li></ol><p>You can't use this feature again until you finish a short or long rest.</p>",
+        "title": "Hexblade's Curse",
+        "icon": "systems/dnd5e/icons/svg/statuses/cursed.svg"
+      },
+      "VFduSFrkP8RUgeW1": {
+        "type": "ItemGrant",
+        "_id": "VFduSFrkP8RUgeW1",
+        "configuration": {
+          "items": [
+            {
+              "uuid": "Item.zglcOQhdrnupSlXV",
+              "optional": false
+            }
+          ],
+          "optional": false,
+          "spell": null
+        },
+        "flags": {},
+        "value": {},
+        "level": 1,
+        "hint": "<p>At 1st level, you acquire the training necessary to effectively arm yourself for battle. You gain proficiency with medium armor, shields, and martial weapons.The influence of your patron also allows you to mystically channel your will through a particular weapon. Whenever you finish a long rest, you can touch one weapon that you are proficient with and that lacks the two-handed property. When you attack with that weapon, you can use your Charisma modifier, instead of Strength or Dexterity, for the attack and damage rolls. This benefit lasts until you finish a long rest. If you later gain the Pact of the Blade feature, this benefit extends to every pact weapon you conjure with that feature, no matter the weapon's type.</p>",
+        "title": "Hex Warrior",
+        "icon": "systems/dnd5e/icons/classes/fighter.webp"
+      }
+    },
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "identifier": "subclass",
+    "source": {
+      "revision": 1,
+      "rules": "2024"
+    },
+    "classIdentifier": "Warlock",
+    "spellcasting": {
+      "progression": "none",
+      "preparation": {
+        "formula": ""
+      },
+      "ability": ""
+    }
+  },
+  "effects": [],
+  "folder": null,
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.360",
+    "systemId": "dnd5e",
+    "systemVersion": "5.3.0",
+    "createdTime": 1775941171313,
+    "modifiedTime": 1775950431072,
+    "lastModifiedBy": "uvReuMsiytFLuxS6",
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": {
+      "worldId": "test-world",
+      "uuid": "Item.eMKKoqTuFiMCGSaG",
+      "coreVersion": "14.360",
+      "systemId": "dnd5e",
+      "systemVersion": "5.3.0"
+    }
+  },
+  "ownership": {
+    "default": 0
+  }
+}

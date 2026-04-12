@@ -1,0 +1,44 @@
+{
+  "id": "mrresetti-custom-classes",
+  "title": "MrResetti custom classes",
+  "authors": [{ "name": "MrResetti" }],
+  "version": "1.0.0",
+  "compatibility": {
+    "minimum": "14",
+    "verified": "14"
+  },
+  "esmodules": ["scripts/main.js"],
+  "packs": [
+    {
+      "name": "classes",
+      "label": "Character Classes",
+      "path": "packs/classes",
+      "type": "Item",
+      "ownership": {
+                "PLAYER": "OBSERVER",
+                "ASSISTANT": "OWNER"
+            },
+      "system": "dnd5e",
+      "flags": {
+                "dnd5e": {
+                    "types": [
+                        "class",
+                        "subclass",
+                        "feat"
+                    ]
+                }
+            }
+    }
+  ],
+  "packFolders": [
+        {
+            "name": "MrResetti",
+            "color": "#1e72cc",
+            "sorting": "m",
+            "packs": [
+                "content",
+                "classes"
+            ]
+        }
+    ]
+}
