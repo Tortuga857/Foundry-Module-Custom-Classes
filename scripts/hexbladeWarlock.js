@@ -1,4 +1,4 @@
-import { HEXBLADE, ATTACK_TYPES, HOOKS } from "./Consts.js";
+import { HEXBLADE, ATTACK_TYPES, HOOKS, MODULE_ID } from "./Consts.js";
 import { MrResettiUtils } from "./utils.js"
 
 export class HexbladeWarlock {
@@ -6,23 +6,29 @@ export class HexbladeWarlock {
     console.log("MrResetti Hexblade warlock hooked")
     Hooks.on(HOOKS.PRE_ROLL_ATTACK, HexbladeWarlock._checkForAttackRollHexbladeCurseFeatureEffects);
     Hooks.on(HOOKS.PRE_DAMAGE_ROLL, HexbladeWarlock._checkForDamageRollHexbladeCurseFeatureEffects);
+    Hooks.on(HOOKS.PRE_APPLY_DAMAGE, HexbladeWarlock._checkForHexbladeCursedDeath);
+    Hooks.on(HOOKS.PRE_APPLY_DAMAGE, HexbladeWarlock._checkForRemoveCurseIfWarlockDowned);
+
   }
 
   static _checkForAttackRollHexbladeCurseFeatureEffects(config, dialog, message) {
+    const warlock = HexbladeWarlock._getActor(message);
+    if (!warlock || !warlock.isOwner) return true;
+    if (!HexbladeWarlock._isActorHexbladeSubclass(warlock)) return true;
+    if (!HexbladeWarlock._isMeleeAttack(config)) return true;
 
-    if (HexbladeWarlock._checkPreconditions(config, dialog, message)) return true;
+    //CONFIG.Dice.randomUniform = () => 0.05  // forces d20 to roll 19
 
-    CONFIG.Dice.randomUniform = () => 0.05  // forces d20 to roll 19
 
-    // check if a target is hexed
     const target = [...game.user.targets][0];
-    const targetActor = target?.actor; // is a target currently selected
+    const targetActor = target?.actor;
     if (!targetActor) { // is a target currently selected
       MrResettiUtils.createTooltipChatMessage("If I'm attacking a hexblade cursed creature, I need to make sure I hover over my target and press \"T\" to target it before rolling.")
       return true;
     }
 
-    if (!HexbladeWarlock._isActorHexed(targetActor)) {
+    // check if a target is hexed
+    if (!HexbladeWarlock._isActorHexedByActor(warlock, targetActor)) {
       return true;
     }
 
@@ -34,10 +40,10 @@ export class HexbladeWarlock {
   }
 
   static _checkForDamageRollHexbladeCurseFeatureEffects(config, dialog, message) {
-
-    if (HexbladeWarlock._checkPreconditions(config, dialog, message)) return true;
-
-    CONFIG.Dice.randomUniform = () => 0.05  // forces d20 to roll 19
+    const warlock = HexbladeWarlock._getActor(message);
+    if (!warlock || !warlock.isOwner) return true;
+    if (!HexbladeWarlock._isActorHexbladeSubclass(warlock)) return true;
+    if (!HexbladeWarlock._isMeleeAttack(config)) return true;
 
     // check if a target is hexed
     const target = [...game.user.targets][0];
@@ -47,21 +53,57 @@ export class HexbladeWarlock {
       return true;
     }
 
-    if (!HexbladeWarlock._isActorHexed(targetActor)) {
+    if (!HexbladeWarlock._isActorHexedByActor(warlock, targetActor)) {
       return true;
     }
 
+    config.rolls[0].parts.push("@prof")
+    MrResettiUtils.createTooltipChatMessage("Target is hexed by you, added proficiency modifier to damage roll!");
 
   }
 
-  static _checkPreconditions(config, dialog, message) {
+  static _checkForHexbladeCursedDeath(cursedActor, dialog, message) {
+    if (!game.user.isGM) return true;
+
+    if (!HexbladeWarlock._isActorHexed(cursedActor)) return true;
+    const cursedBy = HexbladeWarlock._getActorWhoHexed(cursedActor);
+    if (!HexbladeWarlock._isActorHexbladeSubclass(cursedBy)) return true;
+    if (!HexbladeWarlock._isActorHexedByActor(cursedBy, cursedActor)) return true;
+
+    if(cursedActor.system.attributes.hp.value > dialog) {
+      return true; //actor isn't going to die, so exit
+    }
+    // remove the curse if the target is incapacitated
+    const curse = cursedActor.effects.find(e => e.name === HEXBLADE.CURSE_EFFECT_NAME);
+    curse?.delete();
+
+    // if warlock isn't downed, give hp
+    if (cursedBy.system.attributes.hp.value > 0) {
+
+    }
+
+    const warlockLevel = cursedBy.classes["warlock"].system.levels;
+    const chaMod = cursedBy.system.abilities.cha.mod;
+    const healAmount = warlockLevel + chaMod;
+
+    cursedBy.applyDamage(-healAmount);
+
+    MrResettiUtils.createTooltipChatMessage("Warlock was healed");
+
+  }
+
+    static _checkForRemoveCurseIfWarlockDowned(cursedActor, dialog, message) {
+
+    }
+
+  static _checkPreconditions(config, message) {
     const actor = HexbladeWarlock._getActor(message);
     if (!actor) return true;
 
     if (!HexbladeWarlock._isActorHexbladeSubclass(actor)) return true;
-
     if (!HexbladeWarlock._isMeleeAttack(config)) return true;
-    if (!HexbladeWarlock._isAnyActorInstanceHexed()) return true;
+
+    return false;
   }
 
   static _getActor(message) {
@@ -78,14 +120,22 @@ export class HexbladeWarlock {
     return config.subject.attack.type.value === ATTACK_TYPES.MELEE;
   }
 
-  static _isAnyActorInstanceHexed() {
-    return canvas.tokens.placeables.some(t =>
-      t.actor?.effects.some(e => e.name === HEXBLADE.CURSE_EFFECT_NAME && !e.disabled)
-    )
-  }
-
   static _isActorHexed(targetActor) {
     return targetActor?.effects.some(e => e.name === HEXBLADE.CURSE_EFFECT_NAME && !e.disabled)
+  }
+
+  static _isActorHexedByActor(warlockActor, cursedActor) {
+    const curse = cursedActor.effects.find(e => e.name === HEXBLADE.CURSE_EFFECT_NAME);
+    if (!curse) return false;
+    const cursedBy = curse.origin.split(".")[1];
+    return warlockActor.id === cursedBy;
+  }
+
+  static _getActorWhoHexed(cursedActor) {
+    const curse = cursedActor.effects.find(e => e.name === HEXBLADE.CURSE_EFFECT_NAME);
+    if (!curse) return undefined;
+    const cursedBy = curse.origin.split(".")[1];
+    return game.actors.get(cursedBy);
   }
 }
 
